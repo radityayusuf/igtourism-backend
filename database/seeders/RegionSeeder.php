@@ -46,9 +46,9 @@ class RegionSeeder extends Seeder {
         }
         
         $destinationsData = [
-            ["name" => "Danau Toba", "province_id" => $provinces[0]->id, "image" => "seeders/destinations/toba.webp", "lat" => "2.6845", "lng" => "98.8588", "tagline" => "The Largest Volcanic Lake"],
-            ["name" => "Candi Borobudur", "province_id" => $provinces[1]->id, "image" => "seeders/destinations/borobudur.webp", "lat" => "-7.6079", "lng" => "110.2038", "tagline" => "Ancient Buddhist Temple"],
-            ["name" => "Pantai Kuta", "province_id" => $provinces[2]->id, "image" => "seeders/destinations/kuta.webp", "lat" => "-8.7180", "lng" => "115.1689", "tagline" => "Bali's Iconic Beach"],
+            ["name" => "Candi Borobudur", "province_id" => $provinces[1]->id, "image" => "seeders/destinations/toba.webp", "lat" => "-7.6079", "lng" => "110.2038", "tagline" => "Ancient Buddhist Temple"],
+            ["name" => "Candi Prambanan", "province_id" => $provinces[1]->id, "image" => "seeders/destinations/borobudur.webp", "lat" => "-7.7520", "lng" => "110.4915", "tagline" => "Magnificent Hindu Temple"],
+            ["name" => "Pura Tanah Lot", "province_id" => $provinces[2]->id, "image" => "seeders/destinations/kuta.webp", "lat" => "-8.6212", "lng" => "115.0868", "tagline" => "Iconic Sea Temple"],
             ["name" => "Gunung Rinjani", "province_id" => $provinces[3]->id, "image" => "seeders/destinations/rinjani.webp", "lat" => "-8.4112", "lng" => "116.4570", "tagline" => "Majestic Volcanic Peak"],
             ["name" => "Taman Nasional Komodo", "province_id" => $provinces[4]->id, "image" => "seeders/destinations/komodo.webp", "lat" => "-8.5500", "lng" => "119.4800", "tagline" => "Home of the Dragons"],
         ];
