@@ -19,7 +19,12 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    // Daftarkan semua kemungkinan URL frontend agar aman di lokal maupun production
+    'allowed_origins' => [
+        env('FRONTEND_URL', 'http://localhost:3000'),
+        'http://localhost:5030',         // Jika berjalan lokal dengan port 5030
+        'https://gitourism.amania.id',   // Domain production
+    ],
 
     'allowed_origins_patterns' => [],
 
