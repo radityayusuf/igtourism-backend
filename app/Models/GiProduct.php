@@ -16,6 +16,8 @@ class GiProduct extends Model
         'taste_profile', 'taste_profile_id', 'image', 'gallery', 'is_featured',
     ];
 
+    protected $appends = ['image_url'];
+
     protected $casts = [
         'gallery' => 'array',
         'is_featured' => 'boolean',
@@ -49,5 +51,12 @@ class GiProduct extends Model
     public function recipes(): BelongsToMany
     {
         return $this->belongsToMany(Recipe::class, 'recipe_product');
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (!$this->image) return null;
+        if (str_starts_with($this->image, 'http')) return $this->image;
+        return url('storage/' . $this->image);
     }
 }

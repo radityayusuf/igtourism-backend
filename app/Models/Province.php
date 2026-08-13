@@ -16,6 +16,8 @@ class Province extends Model
         'gi_product_count', 'experience_count',
     ];
 
+    protected $appends = ['image_url'];
+
     protected $casts = [
         'geo_json' => 'array',
         'latitude' => 'decimal:7',
@@ -40,5 +42,12 @@ class Province extends Model
     public function events(): HasMany
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (!$this->image) return null;
+        if (str_starts_with($this->image, 'http')) return $this->image;
+        return url('storage/' . $this->image);
     }
 }

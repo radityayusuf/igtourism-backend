@@ -14,6 +14,8 @@ class Destination extends Model
         'latitude', 'longitude', 'map_embed', 'is_featured',
     ];
 
+    protected $appends = ['image_url'];
+
     protected $casts = [
         'gallery' => 'array',
         'is_featured' => 'boolean',
@@ -54,5 +56,12 @@ class Destination extends Model
     public function passportStamps(): HasMany
     {
         return $this->hasMany(PassportStamp::class);
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (!$this->image) return null;
+        if (str_starts_with($this->image, 'http')) return $this->image;
+        return url('storage/' . $this->image);
     }
 }

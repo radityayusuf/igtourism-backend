@@ -5,6 +5,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Article extends Model
 {
     protected $fillable = ['category_id', 'title', 'title_id', 'slug', 'excerpt', 'excerpt_id', 'body', 'body_id', 'author', 'image', 'gallery', 'published_at', 'is_featured'];
+
+    protected $appends = ['image_url'];
     protected $casts = ['gallery' => 'array', 'published_at' => 'datetime', 'is_featured' => 'boolean'];
     public function category(): BelongsTo { return $this->belongsTo(ArticleCategory::class, 'category_id'); }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (!$this->image) return null;
+        if (str_starts_with($this->image, 'http')) return $this->image;
+        return url('storage/' . $this->image);
+    }
 }

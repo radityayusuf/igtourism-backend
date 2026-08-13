@@ -65,6 +65,27 @@ Route::prefix('v1')->group(function () {
     // Partners
     Route::get('/partners', fn() => \App\Models\Partner::orderBy('sort_order')->get());
 
+    // Islands
+    Route::get('/islands', fn() => \App\Models\Island::with('provinces:id,name,slug,island_id')->get());
+
+    // Restaurants
+    Route::get('/restaurants', fn() => \App\Models\Restaurant::with('destination:id,name,slug')->get());
+
+    // Chefs
+    Route::get('/chefs', fn() => \App\Models\Chef::with('restaurant:id,name,slug')->get());
+
+    // Recipes
+    Route::get('/recipes', fn() => \App\Models\Recipe::all());
+
+    // Gastronomy Routes
+    Route::get('/gastronomy-routes', fn() => \Illuminate\Support\Facades\DB::table('gastronomy_routes')->get());
+
+    // Food Pairings
+    Route::get('/food-pairings', fn() => \Illuminate\Support\Facades\DB::table('food_pairings')->get());
+
+    // Accommodations
+    Route::get('/accommodations', fn() => \App\Models\Accommodation::with('destination:id,name,slug')->get());
+
     // Search
     Route::get('/search', function () {
         $q = request('q', '');
